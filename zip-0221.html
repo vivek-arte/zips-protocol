@@ -393,8 +393,8 @@ License: MIT</pre>
     <span class="k">def</span> <span class="nf">from_block</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">ZcashBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ZcashMMRNode</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;Create a leaf node from a block&#39;&#39;&#39;</span>
         <span class="k">return</span> <span class="n">Z</span><span class="p">(</span>
-            <span class="n">left_child</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-            <span class="n">right_child</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">left_child</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">right_child</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">hashSubtreeCommitment</span><span class="o">=</span><span class="n">block</span><span class="o">.</span><span class="n">header_hash</span><span class="p">,</span>
             <span class="n">nEarliestTimestamp</span><span class="o">=</span><span class="n">block</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span>
             <span class="n">nLatestTimestamp</span><span class="o">=</span><span class="n">block</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span>
@@ -424,7 +424,7 @@ License: MIT</pre>
             <span class="o">+</span> <span class="n">serialize_compact_uint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nEarliestHeight</span><span class="p">)</span>
             <span class="o">+</span> <span class="n">serialize_compact_uint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nLatestHeight</span><span class="p">)</span>
             <span class="o">+</span> <span class="n">serialize_compact_uint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nSaplingTxCount</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">hashEarliestOrchardRoot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">hashEarliestOrchardRoot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">buf</span> <span class="o">+=</span> <span class="p">(</span><span class="n">hashEarliestOrchardRoot</span>
                 <span class="o">+</span> <span class="n">hashLatestOrchardRoot</span>
                 <span class="o">+</span> <span class="n">serialize_compact_uint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nOrchardTxCount</span><span class="p">))</span>
@@ -452,8 +452,8 @@ License: MIT</pre>
         <span class="n">hashEarliestOrchardRoot</span><span class="o">=</span><span class="n">left_child</span><span class="o">.</span><span class="n">orchard_root</span><span class="p">,</span>
         <span class="n">hashLatestOrchardRoot</span><span class="o">=</span><span class="n">right_child</span><span class="o">.</span><span class="n">orchard_root</span><span class="p">,</span>
         <span class="n">nOrchardTxCount</span><span class="o">=</span><span class="p">(</span><span class="n">left_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span> <span class="o">+</span> <span class="n">right_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span>
-                         <span class="k">if</span> <span class="n">left_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">right_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-                         <span class="k">else</span> <span class="bp">None</span><span class="p">),</span>
+                         <span class="k">if</span> <span class="n">left_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">right_child</span><span class="o">.</span><span class="n">nOrchardTxCount</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                         <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
         <span class="n">consensusBranchId</span><span class="o">=</span><span class="n">left_child</span><span class="o">.</span><span class="n">consensusBranchId</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">make_root_commitment</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">ZcashMMRNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
