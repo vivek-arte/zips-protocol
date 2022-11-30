@@ -15,6 +15,12 @@
   Discussions-To: <https://github.com/zcash/zips/issues/618>
 
 
+TODO
+====
+- [ ] connect this zip to issuance zip where relevant
+- [ ]  change `type\_params` = `(ik, asset_desc)`
+- [ ] change `type` to `AssetId`
+
 Terminology
 ===========
 
